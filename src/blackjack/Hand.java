@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-    private final List<Card> cards;
+    private List<Card> cards;
 
     public Hand() {
-        cards = new ArrayList<>();
+        this.cards = new ArrayList<>();
     }
 
     public void addCard(Card card) {
@@ -20,18 +20,18 @@ public class Hand {
 
     public int getHandValue() {
         int value = 0;
-        int numAces = 0;
+        int aceCount = 0;
 
         for (Card card : cards) {
             value += card.getValue();
             if (card.getRank() == Rank.ACE) {
-                numAces++;
+                aceCount++;
             }
         }
 
-        while (numAces > 0 && value > 21) {
-            value -= 10; // Convert Ace from 11 to 1
-            numAces--;
+        while (aceCount > 0 && value > 21) {
+            value -= 10;
+            aceCount--;
         }
 
         return value;
@@ -45,9 +45,9 @@ public class Hand {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Card card : cards) {
-            sb.append(card).append(" (").append(card.getValue()).append(") - ");
+            sb.append(card).append(" - ");
         }
-        sb.append("Your Value: ").append(getHandValue());
+        sb.append("Valued at: ").append(getHandValue());
         return sb.toString();
     }
 }

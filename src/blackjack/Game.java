@@ -97,7 +97,4 @@ public class Game {
         }
 
         scanner.close();
-    }
-}
-
-
+    }}

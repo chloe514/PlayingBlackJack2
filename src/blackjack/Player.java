@@ -3,8 +3,8 @@ package blackjack;
 public class Player {
     private String name;
     private double balance;
-    private double currentBet;
     private Hand hand;
+    private double currentBet;
 
     public Player(String name, double initialBalance) {
         this.name = name;
@@ -12,8 +12,8 @@ public class Player {
         this.hand = new Hand();
     }
 
-    public String getName() {
-        return name;
+    public Hand getHand() {
+        return hand;
     }
 
     public double getBalance() {
@@ -21,29 +21,30 @@ public class Player {
     }
 
     public void placeBet(double bet) {
-        if (bet > balance) {
+        if (bet <= balance) {
+            this.currentBet = bet;
+            this.balance -= bet;
+        } else {
             System.out.println("Insufficient balance to place the bet.");
-            return;
         }
-        this.currentBet = bet;
-        balance -= bet;
     }
 
     public void winBet() {
-        balance += currentBet * 2; // Win pays 2:1
+        this.balance += currentBet * 2;
+        this.currentBet = 0;
+    }
+
+    public void loseBet() {
+        this.currentBet = 0;
     }
 
     public void pushBet() {
-        balance += currentBet; // Return the bet amount on a push
+        this.balance += currentBet;
+        this.currentBet = 0;
     }
 
-    public Hand getHand() {
-        return hand;
+    public String getName() {
+        return name;
     }
-
-    // Other methods like bust check and hand management
 }
-
-
-
 
