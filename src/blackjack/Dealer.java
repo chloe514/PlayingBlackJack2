@@ -1,26 +1,14 @@
 package blackjack;
 
-public class Dealer {
-    private Hand hand;
-
+public class Dealer extends Player {
     public Dealer() {
-        this.hand = new Hand();
-    }
-
-    public Hand getHand() {
-        return hand;
+        super("Dealer", 0); // Dealer has no balance
     }
 
     public boolean shouldHit() {
-        return hand.getHandValue() < 17; // Example rule: Dealer hits if hand value is less than 17
-    }
-
-    @Override
-    public String toString() {
-        return "Dealer{" +
-                "hand=" + hand +
-                '}';
+        return getHand().getHandValue() < 17;
     }
 }
+
 
 

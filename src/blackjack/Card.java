@@ -1,20 +1,24 @@
 package blackjack;
 
 public class Card {
-    private Suit suit;
-    private Rank rank;
+    private final Rank rank;
+    private final Suit suit;
 
-    public Card(Suit suit, Rank rank) {
-        this.suit = suit;
+    public Card(Rank rank, Suit suit) {
         this.rank = rank;
+        this.suit = suit;
+    }
+
+    public Rank getRank() {
+        return rank;
     }
 
     public Suit getSuit() {
         return suit;
     }
 
-    public Rank getRank() {
-        return rank;
+    public int getValue() {
+        return rank.getValue();
     }
 
     @Override
@@ -22,4 +26,5 @@ public class Card {
         return rank + " of " + suit;
     }
 }
+
 

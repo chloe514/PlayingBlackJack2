@@ -6,14 +6,13 @@ public enum Rank {
 
     private final int value;
 
-    // Constructor for the enum
     Rank(int value) {
         this.value = value;
     }
 
-    // Method to get the value of the rank
     public int getValue() {
         return value;
     }
 }
+
 
